@@ -9,7 +9,7 @@ def menu():
   Será a função que encaminhará o usuário até o menu principal.
   return dados
   ''' dados são as janelas inciais do programa'''
-def visualizacao():
+def lista_de_compras():
   '''Função que permite a visualização dos itens no estoque.
   Retorna a lista atual de produtos'''
 def pos_compras():
