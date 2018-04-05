@@ -10,14 +10,14 @@ def menu():
   return dados
   ''' dados são as janelas inciais do programa'''
 def visualizacar_estoque():
-  Função que permite a visualização dos itens no estoque por meio do print de uma lista.
+  '''Função que permite a visualização dos itens no estoque por meio do print de uma lista.'''
 def pos_compra():
-  Função que permite adicionar itens no estoque.
+  '''Função que permite adicionar itens no estoque.'''
 def pos_venda():
-  Subtrae itens do estoque.
+  '''Subtrae itens do estoque.'''
 def remove_item():
-  Função que permite excluir produto do armazenamento.
+  '''Função que permite excluir produto do armazenamento.'''
 def recuperarchave():
-  Função que possibilita o usuário a recuperação da chave de acesso envaindo a chave por e-mail.
+  '''Função que possibilita o usuário a recuperação da chave de acesso envaindo a chave por e-mail.'''
 def ajuda():
-  Exibirá texto com tutorial sobre o programa.
+  '''Exibirá texto com tutorial sobre o programa.'''
