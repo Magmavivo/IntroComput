@@ -11,12 +11,14 @@ def menu():
   ''' dados são as janelas inciais do programa'''
 def visualizacao():
   '''Função que permite a visualização dos itens no estoque.'''
-def atualizar():
+def pos_compras():
   '''Função que permite adicionar e/ou editar itens no estoque.'''
-def novo_item():
-  '''Função que cria um novo item e o adiciona ao estoque.'''
+def pos_vendas():
+  '''Premite subtrair item/itens do armazenamento'''.
 def excluir_item():
   '''Função que permite excluir um item do estoque.'''
+def perecivel_quinzenal():
+  '''Retorna uma lista de produtos que irão se vencer.'''
 def recuperarchave():
   '''Função que possibilita o usuário a recuperação da chave de acesso e criação de uma nova.'''
 def ajuda():
