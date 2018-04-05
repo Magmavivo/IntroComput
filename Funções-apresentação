@@ -17,7 +17,7 @@ def pos_compras():
   Retorna uma lista atualizada com novos itens'''
 def pos_vendas():
   '''Premite subtrair item/itens do armazenamento
-  Retorna uma atualização da quantidade de intens do dicionário'''
+  Retorna uma atualização da quantidade de intens armazenados.'''
 def excluir_item():
   '''Função que permite excluir um item do estoque.
   Retorna uma atualização do estoque.'''
