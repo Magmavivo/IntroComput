@@ -21,3 +21,10 @@ def recuperarchave():
   Função que possibilita o usuário a recuperação da chave de acesso e criação de uma nova.
 def ajuda():
   Função que permite visualizar a tela de ajuda.
+  
+  
+  def perecivel_quinzenal():
+    #Retorna uma lista de produtos que irão se vencer.
+  
+   
+  
