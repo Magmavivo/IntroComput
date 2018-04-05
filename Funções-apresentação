@@ -10,16 +10,22 @@ def menu():
   return dados
   ''' dados são as janelas inciais do programa'''
 def visualizacao():
-  '''Função que permite a visualização dos itens no estoque.'''
+  '''Função que permite a visualização dos itens no estoque.
+  Retorna a lista atual de produtos'''
 def pos_compras():
-  '''Função que permite adicionar e/ou editar itens no estoque.'''
+  '''Função que permite adicionar e/ou editar itens no estoque.
+  Retorna uma lista atualizada com novos itens'''
 def pos_vendas():
-  '''Premite subtrair item/itens do armazenamento'''.
+  '''Premite subtrair item/itens do armazenamento
+  Retorna uma atualização da quantidade de intens do dicionário'''
 def excluir_item():
-  '''Função que permite excluir um item do estoque.'''
+  '''Função que permite excluir um item do estoque.
+  Retorna uma atualização do estoque.'''
 def perecivel_quinzenal():
-  '''Retorna uma lista de produtos que irão se vencer.'''
+  ''' Permite a vizualição de perecíveis que irão atingir a data de validade nos próximos 15 dias ou menos.
+  Retorna uma lista de produtos'''
 def recuperarchave():
   '''Função que possibilita o usuário a recuperação da chave de acesso e criação de uma nova.'''
 def ajuda():
-  '''Função que permite visualizar a tela de ajuda.'''
+  '''Função que permite visualizar a tela de ajuda.
+  Retorna None.'''
