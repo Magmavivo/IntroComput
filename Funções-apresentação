@@ -8,16 +8,16 @@ def login():
 def menu():
   Será a função que encaminhará o usuário até o menu principal.
   return dados
-  ''' dados são as janelas inciais do programa
+  ''' dados são as janelas inciais do programa'''
 def visualizacao():
-  Função que permite a visualização dos itens no estoque.
+  '''Função que permite a visualização dos itens no estoque.'''
 def atualizar():
-  Função que permite adicionar e/ou editar itens no estoque.
+  '''Função que permite adicionar e/ou editar itens no estoque.'''
 def novo_item():
-  Função que cria um novo item e o adiciona ao estoque.
+  '''Função que cria um novo item e o adiciona ao estoque.'''
 def excluir_item():
-  Função que permite excluir um item do estoque.
+  '''Função que permite excluir um item do estoque.'''
 def recuperarchave():
-  Função que possibilita o usuário a recuperação da chave de acesso e criação de uma nova.
+  '''Função que possibilita o usuário a recuperação da chave de acesso e criação de uma nova.'''
 def ajuda():
-  Função que permite visualizar a tela de ajuda.
+  '''Função que permite visualizar a tela de ajuda.'''
