@@ -1,0 +1,146 @@
+estoque = {}
+estoque['1110']={}
+index = (len(estoque['1110']))+1
+estoque['1110'][index] = {}
+estoque['1110'][index]['nome']= 'coca' 
+estoque['1110'][index]['vencimento']= '2018-04-28'
+estoque['1110'][index]['quantidade']= 30
+index = (len(estoque['1110']))+1
+estoque['1110'][index] = {}
+estoque['1110'][index]['nome']= 'coca' 
+estoque['1110'][index]['vencimento']= '2018-05-28'
+estoque['1110'][index]['quantidade']= 20
+estoque['1100']={}
+index = (len(estoque['1100']))+1
+estoque['1100'][index] = {}
+estoque['1100'][index]['nome']= 'arroz' 
+estoque['1100'][index]['vencimento']= '2018-06-28'
+estoque['1100'][index]['quantidade']= 50
+ult_digito = {'111':001,'110':001,'101':000,'011':000,'010':000,'000':000,'100':000,'001':000}
+
+def adicionar_item():
+    nome = input('digite o nome do produto:')
+    quant = int(input('Quantide:'))
+    print('Responda as seguintes perguntar com '"S"' para sim e '"N"' para não')
+    p1 = input('É perecível?').upper()
+    if p1 =='S':
+        data = input('data de validade:(aaaa-mm-dd)')
+    p2 = input('É frágil?').upper()
+    print('Digite 1 para NATURAL e 2 para GELADO.')
+    p3 = input('Climatação:')
+    #FUNÇÃO GERA CÓDIDO E ADICONA NO DICIONÁRIO
+    gerar_codigo(p1,p2,p3,nome,data,quant)
+def gerar_codigo(p1,p2,p3,nome,data,quant):
+    cod = ''
+    if p1 =='S':
+        cod += '1'
+    else:
+        cod += '0'
+    if p2=='S':
+        cod+='1'
+    else:
+        cod += '0'
+    if p3 =='1':
+        cod+='1'
+    else:
+        cod += '0'
+    # acrescentar 3 para adicionar no estoque
+    if cod in ult_digito:
+        ultimos = str(ult_digito[cod])
+        ult_digito[cod] += 1
+        cod = cod + ultimos
+        add_estoque(cod,nome,data,quant)
+
+def add_estoque(cod,nome,data,quant):
+    if cod not in estoque:
+        estoque[cod]={}
+        index = (len(estoque[cod]))+1
+        estoque[cod][index] = {}
+        estoque[cod][index]['nome']= nome 
+        estoque[cod][index]['vencimento']= data
+        estoque[cod][index]['quantidade']= quant
+    else:
+        index = (len(estoque[cod])) +1
+        estoque[cod][index]={}
+        estoque[cod][index]['nome']= nome
+        estoque[cod][index]['vencimento']= data
+        estoque[cod][index]['quantidade']= quant
+
+def quinzena():
+    #Incluir aviso caso não existam produtos dentro para ser inclusos na lista
+    print(print(10*'-','PRODUTOS QUE IRÃO VENCER NOS PRÓXIMOS 15 DIAS',10*'-'))
+    print('CÓDIGO','%6s'%'NOME','%12s'%'VALIDADE' ,'%7s'%'QUANT')
+    for i in estoque:
+        if len(estoque[i])>1:
+            for k in estoque[i]:
+                data = estoque[i][k]['vencimento']
+                ano = int(data[0:4])
+                mes = int(data[5:7])
+                dia = int(data[-2:])
+                dt_compra = date(ano,mes,dia)
+                dif = (str(dt_compra - hoje)).split(' ')
+                dif = int(dif[0])
+                if dif<=15:
+                    print(i,'|',estoque[i][k]['nome'],'|',estoque[i][k]['vencimento'],'|',estoque[i][k]['quantidade'])
+                
+        else:
+            data = estoque[i][1]['vencimento']
+            ano = int(data[0:4])
+            mes = int(data[5:7])
+            dia = int(data[-2:])
+            dt_compra = date(ano,mes,dia)
+            dif = (str(dt_compra - hoje)).split(' ')
+            dif = int(dif[0]) 
+            if dif<=15:
+                print(i,'|',estoque[i][1]['nome'],'|',estoque[i][1]['vencimento'],'|',estoque[i][1]['quantidade'])
+
+def pos_vendas():
+    cod = input('Digite o código do produto:')
+    quant = int(input('Quantidade que deseja subtrair do estoque:'))
+    for i in estoque:
+        if len(estoque[i])>1 and cod ==i:
+            menor_data = estoque[i][1]['vencimento']
+            ano = int(menor_data[0:4])
+            mes = int(menor_data[5:7])
+            dia = int(menor_data[-2:])
+            for k in estoque[i]:
+                prox_data = (estoque[i][k]['vencimento'])
+                prox_ano = int(prox_data[0:4])
+                prox_mes = int(prox_data[5:7])
+                prox_dia = int(prox_data[-2:])
+                if prox_ano < ano:
+                    menor_data = estoque[i][k]['vencimento']
+                elif prox_mes == mes:
+                    if prox_dia < dia:
+                        menor_data = str(prox_data)
+                        
+            for k in estoque[i]:
+                if estoque[i][k]['vencimento'] == menor_data:
+                    quant_atual = estoque[i][k]['quantidade'] - quant
+                    estoque[i][k]['quantidade'] = quant_atual    
+        else:
+            if cod ==i:
+                quant_atual = estoque[i][1]['quantidade'] - quant
+                estoque[i][1]['quantidade'] = quant_atual
+
+def lista_compras():
+    print(10*'-','ESTOQUE AUTAL',10*'-')
+    print('CÓDIGO','%6s'%'NOME','%12s'%'VALIDADE' ,'%7s'%'QUANT')
+    for i in sorted(estoque):
+        if len(estoque[i])>1:
+            for k in sorted(estoque[i]):
+                print(i,'|',estoque[i][k]['nome'],'|',estoque[i][k]['vencimento'],'|',estoque[i][k]['quantidade'])
+        else:
+            print(i,'|',estoque[i][1]['nome'],'|',estoque[i][1]['vencimento'],'|',estoque[i][1]['quantidade'])
+    cod = input('Digite o código do produto:')
+    if cod in estoque:
+        quant_desejada = int(input('Digite quantidade que deseja ter armazenada: '))
+        if len(estoque[cod])>1:
+            soma_quant = 0
+            for k in estoque[cod]:
+                soma_quant += estoque[cod][k]['quantidade']
+            comprar = quant_desejada - soma_quant
+            print('Precisa adquirir',comprar,'unidade(s) de',estoque[cod][1]['nome'],'.' )
+        else:
+            comprar = quant_desejada - estoque[cod][1]['quantidade']
+            print('Precisa adquirir',comprar,'unidade(s) de',estoque[cod][1]['nome'],'.')
